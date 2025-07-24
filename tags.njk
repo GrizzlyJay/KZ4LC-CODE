@@ -1,11 +1,14 @@
 ---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tags/{{ tag | slug }}/"
 layout: base.njk
-title: Home
 ---
 
-<section><h1>Recent Blog Posts</h1></section>
-{% for post in collections.latestPosts %}
-    <div class="post-preview">
+<section><h1>{{ tag | capitalize }}</h1></section>
+{% for post in collections[tag] %}<div class="post-preview">
         <article>
             <h2><a href="/posts/{{ post.data.slug }}/">{{ post.data.title }}</a></h2>
             {% if post.data.date %}<h3 class="subtitle">{{ post.data.date | dateOnly }}</h3>{% endif %}
@@ -14,3 +17,4 @@ title: Home
             <img src="{{ post.data.image }}" alt="{{ post.data.title }}" width="500">
             {% endif %}</article>
     </div>{% endfor %}
+    

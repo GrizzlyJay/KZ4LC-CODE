@@ -136,3 +136,17 @@ a:hover {
   text-decoration: none;
   color: #9a2a26;
 }
+
+/* Stack nav vertically on small/mobile screens */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 5px;
+  }
+  nav ul li {
+    max-width: none;
+  }
+  nav a {
+    padding: 12px;
+  }
+}

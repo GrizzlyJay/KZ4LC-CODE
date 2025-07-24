@@ -3,9 +3,13 @@
     <h2 class="subtitle">An Amateur Radio Journal</h2>
     <nav>
       <ul>
-        <li><a href="#acquisitions">Acquisitions</a></li>
-        <li><a href="#adventures">Adventures</a></li>
-        <li><a href="#projects">Projects</a></li>
+        {% for tag in collections.tagList | sortAlphabetically %}
+          <li>
+            <a href="/tags/{{ tag | slug }}/">
+              {{ tag | capitalize }}
+            </a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
   </header>

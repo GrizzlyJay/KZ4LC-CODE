@@ -1,11 +1,11 @@
 ---
-title: My Second Blog Post
+title: Xiegu G90 Digital Go-box
 layout: post.njk
 slug: post-2
 image: 
-tags: ['post','project']
-desc: 
-date: 2025-07-23
+tags: ['projects']
+desc: The G90 Go-Box is a go!
+date: 2025-07-20
 ---
 
-This is my second ever blog post radio family.
+This is a placeholder page for documenting my G90 go-box. It was an awesome project with it's ups and downs, but a worthy endevor nonetheless.
