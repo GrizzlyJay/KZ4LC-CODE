@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
 
   // Passthrough your CSS and Admin Panel
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("images");
 
   // Format dates as YYYY‑MM‑DD
   eleventyConfig.addFilter("dateOnly", dateObj =>
