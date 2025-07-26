@@ -1,8 +1,30 @@
- - name: Push to LIVE repo
+name: Deploy LIVE static files
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-live:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CODE repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Debug workspace contents
+        run: |
+          echo "=== ROOT DIRECTORY ==="
+          ls -R .
+
+      - name: Push to LIVE repo
         uses: ad-m/github-push-action@v0.6.0
         with:
-          # Use the exact owner/repo you verified above:
-          repository: GrizzlyJay/KZ4LC-LIVE  
+          repository: GrizzlyJay/KZ4LC-LIVE
           branch: main
           github_token: ${{ secrets.LIVE_REPO_TOKEN }}
           directory: KZ4LC-LIVE
