@@ -54,8 +54,8 @@ module.exports = function (eleventyConfig) {
 
   return {
     dir: {
-      input: ".",
-      output: "../KZ4LC-LIVE",
+      input: "KZ4LC-CODE",
+      output: "KZ4LC-LIVE",
     },
   };
 };
