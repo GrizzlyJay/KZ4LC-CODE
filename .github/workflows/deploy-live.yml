@@ -26,8 +26,10 @@ jobs:
       - name: Build Eleventy site
         run: npx @11ty/eleventy --input=KZ4LC-CODE --output=KZ4LC-LIVE
 
-      - name: Debug: list output folder
-        run: ls -R .
+      - name: Debug workspace contents
+        run: |
+          echo "Workspace files:"
+          ls -R .
 
       - name: Push to LIVE repo
         uses: ad-m/github-push-action@v0.6.0
