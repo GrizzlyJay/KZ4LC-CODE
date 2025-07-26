@@ -2,7 +2,7 @@
 title: The Ft-710
 layout: post.njk
 slug: post-5
-image: images/ft710.jpg
+image: /images/ft710.jpg
 tags: ['acquisitions']
 desc: The 710 has landed
 date: 
