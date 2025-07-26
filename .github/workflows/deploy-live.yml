@@ -1,50 +1,33 @@
-# .github/workflows/deploy-live.yml
-name: Build & Deploy to LIVE
+name: Deploy LIVE static files
 
 on:
   push:
     branches:
-      - main    # or your default branch
+      - main
+    # Only run when the LIVE folder changes:
+    paths:
+      - 'KZ4LC-CODE/KZ4LC-LIVE/**'
 
 jobs:
-  build-and-deploy:
+  deploy-live:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Pull down your CODE repo
       - name: Checkout CODE repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 2) Set up Node
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      # 3) Install your dependencies
-      - name: Install dependencies
-        run: npm ci
-
-      # 4) Build the site
-      - name: Build Eleventy site
+      - name: Verify LIVE folder exists
         run: |
-          # read from KZ4LC-CODE/, emit into KZ4LC-CODE/KZ4LC-LIVE/
-          npx @11ty/eleventy --input=KZ4LC-CODE --output=KZ4LC-CODE/KZ4LC-LIVE
+          echo "Contents of KZ4LC-CODE/KZ4LC-LIVE:"
+          ls -R KZ4LC-CODE/KZ4LC-LIVE
 
-      # 5) Debug: make sure KZ4LC-CODE/KZ4LC-LIVE exists
-      - name: List CODE folder
-        run: ls -R KZ4LC-CODE
-
-      # 6) Push the built files into your LIVE repo
       - name: Push to LIVE repo
         uses: ad-m/github-push-action@v0.6.0
         with:
-          # your LIVE repo slug here:
           repository: GrizzlyJay/KZ4LC-LIVE
           branch: main
           github_token: ${{ secrets.LIVE_REPO_TOKEN }}
-          # THIS must match exactly where build wrote your static files:
           directory: KZ4LC-CODE/KZ4LC-LIVE
           force: true
