@@ -5,7 +5,7 @@ body {
   padding: 20px;
   background-color: #3a3a39; /* dark grey */
   color: #3a3a39; /* text color (overridden in header/section) */
-  background-image: url("img/retro-bg.png");
+  background-image: url("/css/img/retro-bg.png");
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-position: center center;
