@@ -1,0 +1,28 @@
+# KZ4LC-CODE/admin/config.yml
+
+backend:
+  name: git-gateway
+  branch: main        # Branch to commit to
+
+media_folder: "images/uploads"   # Where Media files will be stored (relative to your site root)
+public_folder: "/images/uploads" # The public-facing path to those files
+
+# Optional: customize the Netlify Identity widget
+identity_widget: true
+slug:
+  encoding: "ascii"      # strip non-ASCII chars from slugs
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "posts"        # Used in the CMS UI
+    label: "Blog Posts"  # Label shown in the UI
+    folder: "KZ4LC-CODE/posts"   # Path to the folder where your markdown lives
+    create: true         # Allow users to create new files in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"  # File naming convention
+    fields:              # The fields each post will have
+      - { label: "Title",        name: "title",  widget: "string" }
+      - { label: "Publish Date", name: "date",   widget: "datetime" }
+      - { label: "Tags",         name: "tags",   widget: "list" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Body",         name: "body",   widget: "markdown" }
