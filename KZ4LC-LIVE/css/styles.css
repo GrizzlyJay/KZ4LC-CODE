@@ -111,6 +111,10 @@ nav a:hover {
   color: #c9c7c3;
 }
 
+.post-date {
+  text-align: center;
+}
+
 .post-preview {
   background-color: #ffffff;
   border: 2px solid #72706f;
@@ -131,6 +135,23 @@ nav a:hover {
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.post-body img,
+.post-image img {
+  display: block;         /* removes bottom whitespace */
+  max-width: 100%;        /* never overflow its container */
+  width: 100%;            /* stretch to fill when container is narrower */
+  height: auto;           /* preserve aspect ratio */
+  border: 2px solid #72706f;           /* keep your existing border */
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  margin: 1rem auto;      /* center & add breathing room */
+}
+
+/* optional: constrain overly tall images on huge monitors */
+@media (min-width: 1600px) {
+  .post-body img { max-width: 80%; }
 }
 
 .post-preview img {
