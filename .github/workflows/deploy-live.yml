@@ -25,13 +25,20 @@ jobs:
         env:
           PAT: ${{ secrets.LIVE_REPO_TOKEN }}
         run: |
-          # Configure git in the workspace
           cd KZ4LC-LIVE
+
+          # Initialize a Git repo and set identity
           git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Point to your LIVE repo using the PAT
           git remote add live "https://x-access-token:${PAT}@github.com/GrizzlyJay/KZ4LC-LIVE.git"
+
+          # Ensure main branch
           git checkout -b main || git checkout main
 
-          # Commit everything
+          # Commit everything (allows empty in case nothing changed)
           git add -A
           git commit -m "chore: update LIVE from CODE" --allow-empty
 
