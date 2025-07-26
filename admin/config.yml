@@ -1,0 +1,25 @@
+# KZ4LC-CODE/admin/config.yml
+
+# 1) GitHub backend (replace with your repo path & branch)
+backend:
+  name: github
+  repo: GrizzlyJay/KZ4LC-CODE   # <username>/<repo>
+  branch: main                  # or master
+
+# 2) Where uploaded files go
+media_folder: "images/uploads"  # inside your input dir
+public_folder:  "/images/uploads"
+
+# 3) Your collections (posts, pages, etc.)
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "KZ4LC-CODE/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title",       name: "title",      widget: "string" }
+      - { label: "Publish Date",name: "date",       widget: "datetime" }
+      - { label: "Tags",        name: "tags",       widget: "list" }
+      - { label: "Featured Image", name: "image",   widget: "image" }
+      - { label: "Body",        name: "body",       widget: "markdown" }

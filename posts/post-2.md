@@ -5,7 +5,7 @@ slug: post-2
 image: 
 tags: ['projects']
 desc: The G90 Go-Box is a go!
-date: 2025-07-20
+date: 
 ---
 
 This is a placeholder page for documenting my G90 go-box. It was an awesome project with it's ups and downs, but a worthy endevor nonetheless.
