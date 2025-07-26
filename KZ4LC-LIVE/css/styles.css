@@ -154,10 +154,7 @@ figure.post-image {
         /* center & add breathing room */
 }
 
-/* optional: constrain overly tall images on huge monitors */
-@media (min-width: 1600px) {
-  .post-body img { max-width: 80%; }
-}
+
 
 .post-preview img {
   display: block;
