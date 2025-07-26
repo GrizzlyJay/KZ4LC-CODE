@@ -3,36 +3,37 @@ name: Build & Deploy to LIVE
 on:
   push:
     branches:
-      - main    # or whichever branch you author on
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout CODE repo
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0      # needed for pushing tags, but safe for us
+      - name: Checkout CODE repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Use Node 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build Eleventy site
-      run: npx @11ty/eleventy \
-            --input=KZ4LC-CODE \
-            --output=KZ4LC-LIVE
+      - name: Build Eleventy site
+        run: npx @11ty/eleventy --input=KZ4LC-CODE --output=KZ4LC-LIVE
 
-    - name: Push to LIVE repo
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.LIVE_REPO_TOKEN }}
-        repository: GrizzlyJay/KZ4LC-LIVE
-        branch: main
-        force: true
-        directory: KZ4LC-LIVE
+      - name: Debug: list output folder
+        run: ls -R .
+
+      - name: Push to LIVE repo
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          repository: GrizzlyJay/KZ4LC-LIVE
+          branch: main
+          github_token: ${{ secrets.LIVE_REPO_TOKEN }}
+          directory: KZ4LC-LIVE
+          force: true
