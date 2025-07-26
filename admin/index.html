@@ -1,12 +1,26 @@
-<!-- KZ4LC-CODE/admin/index.html -->
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Content Manager</title>
-  </head>
-  <body>
-    <!-- Mount point for Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Content Manager</title>
+</head>
+<body>
+  <!-- 1) Netlify Identity widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Initialize Netlify Identity
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          // when not logged in, show the signup/login dialog
+          window.netlifyIdentity.open();
+        }
+      });
+      window.netlifyIdentity.init();
+    }
+  </script>
+
+  <!-- 2) The CMS itself -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</body>
 </html>
