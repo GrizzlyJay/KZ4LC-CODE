@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-live:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,18 +18,22 @@ jobs:
 
       - name: Debug workspace contents
         run: |
-          echo "=== Root directory ==="
+          echo "=== Root ==="
           ls -R .
 
-      - name: Push to LIVE repo
-        uses: peter-evans/push-to-another-repository@v2
-        with:
-          # The folder inside this repo containing your static build
-          source-directory: 'KZ4LC-LIVE'
-          # Your PAT secret
-          destination-github-token: ${{ secrets.LIVE_REPO_TOKEN }}
-          # Exact slug of your LIVE repo
-          destination-repository: GrizzlyJay/KZ4LC-LIVE
-          destination-branch: main
-          commit-message: 'chore: update Live site (build from CODE)'
-          allow-empty-commit: true
+      - name: Push to LIVE repo via Git
+        env:
+          PAT: ${{ secrets.LIVE_REPO_TOKEN }}
+        run: |
+          # Configure git in the workspace
+          cd KZ4LC-LIVE
+          git init
+          git remote add live "https://x-access-token:${PAT}@github.com/GrizzlyJay/KZ4LC-LIVE.git"
+          git checkout -b main || git checkout main
+
+          # Commit everything
+          git add -A
+          git commit -m "chore: update LIVE from CODE" --allow-empty
+
+          # Force‑push to live
+          git push live HEAD:main --force
