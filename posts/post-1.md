@@ -3,8 +3,9 @@ title: My First Blog Post
 layout: post.njk
 slug: post-1
 image: 
-tags: ['adventures']
-desc: The blog is live!
+tags:
+- adventures
+desc: This is my first blog post radio family.
 date: 
 ---
 
