@@ -131,7 +131,7 @@ nav a:hover {
 .post-body {
   background-color: #ffffff;
   border: 2px solid #72706f;
-  padding: 25px 50px;
+  padding: 2rem;
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
@@ -146,7 +146,7 @@ nav a:hover {
   border: 2px solid #72706f;           /* keep your existing border */
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  margin: 1rem auto;      /* center & add breathing room */
+        /* center & add breathing room */
 }
 
 /* optional: constrain overly tall images on huge monitors */
