@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-    # Only run when the LIVE folder changes:
-    paths:
-      - 'KZ4LC-CODE/KZ4LC-LIVE/**'
+  workflow_dispatch:
 
 jobs:
   deploy-live:
@@ -18,10 +16,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify LIVE folder exists
+      - name: Debug workspace contents
         run: |
-          echo "Contents of KZ4LC-CODE/KZ4LC-LIVE:"
-          ls -R KZ4LC-CODE/KZ4LC-LIVE
+          echo "=== ROOT DIRECTORY ==="
+          ls -R .
 
       - name: Push to LIVE repo
         uses: ad-m/github-push-action@v0.6.0
@@ -29,5 +27,5 @@ jobs:
           repository: GrizzlyJay/KZ4LC-LIVE
           branch: main
           github_token: ${{ secrets.LIVE_REPO_TOKEN }}
-          directory: KZ4LC-CODE/KZ4LC-LIVE
+          directory: KZ4LC-LIVE
           force: true
