@@ -1,11 +1,12 @@
 ---
-title: AV 2011 Military SatCom Antenna and More
+date: null
+desc: I can't believe I own this now!
+image: null
 layout: post.njk
 slug: post-3
-image: 
-tags: ['acquisitions']
-desc: I can't believe I own this now!
-date: 
+tags:
+- acquisitions
+title: AV 2011 Military SatCom Antenna and More
 ---
 
 I got a sweet deal on this antenna. I don't know that the general public has much use for it, but that didn't stop me from throwing money at this guy!
