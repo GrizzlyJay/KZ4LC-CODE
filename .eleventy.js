@@ -13,8 +13,8 @@ module.exports = function (eleventyConfig) {
   // ──────────────────────────────────────────────────────────────────────
 
   // Passthrough your CSS and Admin Panel
-  eleventyConfig.addPassthroughCopy("KZ4LC-CODE/css");
-  eleventyConfig.addPassthroughCopy("KZ4LC-CODE/admin");
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("admin");
 
   // Format dates as YYYY‑MM‑DD
   eleventyConfig.addFilter("dateOnly", dateObj =>
